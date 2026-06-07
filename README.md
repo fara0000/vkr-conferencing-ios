@@ -59,7 +59,7 @@ All four metrics from Chapter 4 are emitted as JSON events, timed with `CACurren
 * **DR** — delivery ratio
 * **RT** — recovery time after a network event
 
-Events are POSTed to the signaling/telemetry server (see [`vkr-conferencing-stats`](../vkr-conferencing-stats)) for off-device aggregation.
+Events are POSTed to the signaling/telemetry server (see [`vkr-conferencing-stats`](https://github.com/fara0000/vkr-conferencing-stats)) for off-device aggregation.
 
 ## Build
 
@@ -112,9 +112,9 @@ docs/
 
 ## Related repositories
 
-* [`vkr-conferencing-android`](../vkr-conferencing-android) — Android counterpart
-* [`vkr-conferencing-stats`](../vkr-conferencing-stats) — Python statistics + Node.js signaling server
-* [`vkr-conferencing-landing`](../vkr-conferencing-landing) — landing page with thesis summary
+* [`vkr-conferencing-android`](https://github.com/fara0000/vkr-conferencing-android) — Android counterpart
+* [`vkr-conferencing-stats`](https://github.com/fara0000/vkr-conferencing-stats) — Python statistics + Node.js signaling server
+* [`vkr-conferencing-landing`](https://github.com/fara0000/vkr-conferencing-landing) — landing page with thesis summary
 
 ## License
 
