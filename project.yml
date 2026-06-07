@@ -1,0 +1,80 @@
+name: VKRConferencing
+options:
+  bundleIdPrefix: io.vkr.conferencing
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  groupSortPosition: top
+  generateEmptyDirectories: false
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    ENABLE_BITCODE: NO
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: ""
+
+packages:
+  WebRTC:
+    url: https://github.com/stasel/WebRTC
+    from: "120.0.0"
+
+targets:
+  VKRConferencing:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources/VKRConferencing
+    info:
+      path: Sources/VKRConferencing/App/Info.plist
+      properties:
+        CFBundleDisplayName: VKR Conferencing
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        UIBackgroundModes:
+          - voip
+          - audio
+          - remote-notification
+        NSMicrophoneUsageDescription: "VKR Conferencing needs the microphone for audio calls."
+        NSCameraUsageDescription: "VKR Conferencing needs the camera for video calls."
+        NSLocalNetworkUsageDescription: "VKR Conferencing uses the local network to reach the signaling server during local test runs."
+        ITSAppUsesNonExemptEncryption: false
+    entitlements:
+      path: Sources/VKRConferencing/App/VKRConferencing.entitlements
+      properties:
+        aps-environment: development
+        com.apple.developer.pushkit.unrestricted-voip: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: io.vkr.conferencing
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+    dependencies:
+      - package: WebRTC
+
+  VKRConferencingTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/VKRConferencingTests
+    dependencies:
+      - target: VKRConferencing
+
+schemes:
+  VKRConferencing:
+    build:
+      targets:
+        VKRConferencing: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - VKRConferencingTests
+    archive:
+      config: Release
